@@ -1,0 +1,43 @@
+#include <stdio.h>
+#define DOLLAR 100
+#define QUARTER 25
+#define DIME 10
+#define NICKEL 5
+#define PENNY 1
+
+int main(void)
+{
+    int dollars, quarters, dimes, nickels, pennies;
+    char first, last;
+    int total_dollars, total_cents, change;
+
+    // 1- get and display the customer's initials
+    printf("Enter your initials(e.g MT for Metin Turan):");
+    scanf("%c%c", &first, &last);
+    printf("welcome %c.%c.\n", first, last);
+
+    // 2- get each count of each coin type
+    printf("Enter your count of dollars:");
+    scanf("%d", &dollars);
+    printf("Enter your count of quarters:");
+    scanf("%d", &quarters);
+    printf("Enter your count of dimes:");
+    scanf("%d", &dimes);
+    printf("Enter your count of nickels:");
+    scanf("%d", &nickels);
+    printf("Enter your count of pennies:");
+    scanf("%d", &pennies);
+
+    // 3- compute the total value in cents
+    total_cents = DOLLAR * dollars + QUARTER * quarters + DIME * dimes + NICKEL * nickels + PENNY * pennies;
+
+    // 4- Find the value in dollars and change
+    total_dollars = total_cents / DOLLAR;
+    change = total_cents % DOLLAR;
+
+    // 5. Display the information
+    printf("Dear %c.%c.,\n", first, last);
+    printf("you have %d$ and %d cents \n", total_dollars, change);
+
+    return 0;
+}
