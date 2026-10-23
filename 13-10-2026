@@ -1,0 +1,54 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <conio.h>
+#include <ctype.h>
+
+#define DEMAND_CRG 35.00
+#define PER_1000_CRG 1.1
+#define LATE_CRG 2.0
+
+void info()
+{
+    printf("      PROGRAM INFO\n");
+    printf("========================================\n");
+    printf("This program is designed for water bill\n");
+    printf("    It has following details =>\n");
+    printf("        #Consumption price  \n");
+    printf("        #Late price         \n");
+    printf("        #Demand price       \n");
+    printf("========================================\n");
+    printf("          Press any key...");
+    getch();
+    system("cls");
+}
+
+int main()
+{
+    int previous, current;  // meter readings
+    char unpaid;            // if any unpaid bill?
+
+    double bill;            // total bill value
+    double use_charge;      // charge for water consumption
+    double late_charge;     // additional charge for unpaid bills
+
+    info();
+    printf("Enter quarterly meter values(previous, current) separately in order:\n");
+    scanf("%d %d", &previous, &current);
+    fflush(stdin);
+    printf("Is there any unpaid bill(y/n):");
+    scanf("%c", &unpaid);
+    //if (unpaid=='y' || unpaid=='Y') late_charge=LATE_CRG;
+    if (toupper(unpaid) == 'Y') late_charge = LATE_CRG;
+    use_charge = abs(current - previous) * PER_1000_CRG;
+    bill = DEMAND_CRG + use_charge + late_charge;
+
+    system("cls");
+    printf("          BILL INFO\n");
+    printf("========================================\n");
+    printf("      #Consumption price:%.2f\n", use_charge);
+    printf("      #Late price       :%.2f\n", late_charge);
+    printf("      #Demand price     :%.2f\n", DEMAND_CRG);
+    printf("BILL TO BE PAID is $%.2f\n", bill);
+    printf("          Press any key...");
+    getch();
+}
