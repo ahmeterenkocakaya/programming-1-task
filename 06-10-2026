@@ -1,0 +1,82 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <conio.h>
+
+void drawCircle(void)
+{
+    printf("   -   \n");
+    printf(" -   - \n");
+    printf("-     - \n");
+    printf("-     - \n");
+    printf(" -   - \n");
+    printf("   -   \n");
+}
+
+void drawIntersect(void)
+{
+    printf("   -   \n");
+    printf("  - -  \n");
+    printf(" -   - \n");
+    printf("-     -\n");
+}
+
+void drawBaseline(void)
+{
+    printf("- - - -\n");
+}
+
+void drawParallel()
+{
+    printf("-     -\n");
+    printf("-     -\n");
+    printf("-     -\n");
+    printf("-     -\n");
+}
+
+void drawHouse (void)
+{
+    drawIntersect();
+    drawBaseline();
+    drawParallel();
+    drawBaseline();
+}
+
+void drawFemale (void)
+{
+    drawCircle();
+    drawIntersect();
+    drawBaseline();
+    drawIntersect();
+}
+
+int drawSelection()
+{
+    int choice;
+    printf("==================\n");
+    printf("= 1-Draw house   =\n");
+    printf("= 2-Draw female  =\n");
+    printf("= 3-Exit program = \n");
+    printf("==================\n");
+    printf("          Choice:");
+    scanf("%d", &choice);
+    return choice;
+}
+
+int main(void)
+{
+    int choice;
+
+    do {
+        choice = drawSelection();
+        if (choice == 1) drawHouse();
+        else if (choice == 2) drawFemale();
+        else if (choice == 3) exit(0);
+        printf("Press any key!...");
+        getch();
+        system("cls");
+    } while (choice != 3);
+
+    printf("\n\n\n");
+
+    return 0;
+}
